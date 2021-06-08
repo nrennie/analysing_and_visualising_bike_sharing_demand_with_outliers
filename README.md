@@ -1,1 +1,1 @@
-# Analysing_and_visualising_bike_sharing_demand_with_outliers
+# Analysing and visualising bike sharing demand with outliers
