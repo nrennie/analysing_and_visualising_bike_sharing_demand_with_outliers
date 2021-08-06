@@ -28,9 +28,11 @@ ts_d <- unname(unlist(outlier_mat[,19]))
 ts_na <- ts(data = ts_d, start = dates[1], end = dates[1095], frequency = 1)
 
 #plot outliers
-plot_data <- tibble(ts_na, dates=agg_cluster_output[,1])
+plot_data <- tibble(ts_na, dates=agg_cluster_output[,1]) %>% filter(!is.na(ts_na))
+plot_data$point_col <- c('#e41a1c','#377eb8',rep('#984ea3',2),'#4daf4a',
+                         rep('#a65628',4),'#ffff33',rep('#ff7f00',2),rep('#f781bf',2),'#999999')
 p <- ggplot() +
-  geom_segment(data=plot_data, aes(x=dates, xend=dates, y=0, yend=as.vector(ts_na)), size=0.4, colour="grey85") +
+  geom_segment(data=plot_data, aes(x=dates, xend=dates, y=0, yend=as.vector(ts_na), colour=point_col), size=0.4) +
   geom_point(data=plot_data, mapping=aes(x=dates, y=as.vector(ts_na)), size=0.6) +
   labs(x="", y="Outlier severity") +
   theme_light() +
@@ -43,7 +45,7 @@ p <- ggplot() +
         legend.text=element_text(family="Times New Roman", size=9),
         legend.background = element_rect(color = NA,fill="transparent"),
         legend.box.background = element_rect(fill = "transparent",color=NA),
-        legend.position="right",
+        legend.position="none",
         legend.title=element_blank(),
         plot.caption=element_text(family="Times New Roman", size=11, hjust=0.5),
         legend.key = element_blank())

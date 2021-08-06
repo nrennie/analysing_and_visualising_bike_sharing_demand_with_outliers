@@ -7,7 +7,7 @@ library(geosphere)
 library(extraDistr)
 library(igraph)
 
-setwd("./Functions")
+setwd("../Functions")
 source("wrapper_function.R")
 source("c_dist_centre.R")
 
