@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+Data/
+Images/
+R Scripts/Graph_Construction.R
+Analysing_and_visualising_bike_sharing_demand_with_outliers.Rproj
